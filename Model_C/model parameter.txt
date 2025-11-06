@@ -1,0 +1,51 @@
+model-1
+batch_size 1
+num_layer 3
+sde_steps 3
+mask_rate 0.4
+remask_rate 0.5
+lr 2e-4
+num_workers 4
+num_remask_views 2
+temperature 0.05
+gamma 1
+epochs 50
+
+model-2
+batch_size 1
+num_layer 3
+sde_steps 3
+mask_rate 0.3
+remask_rate 0.5
+lr 1e-4
+num_workers 4
+num_remask_views 2
+temperature 0.05
+gamma 2
+epochs 50
+
+model-3
+batch_size 2
+num_layer 3
+sde_steps 3
+mask_rate 0.45
+remask_rate 0.5
+lr 1e-4
+num_workers 4
+num_remask_views 2
+temperature 0.05
+gamma 3
+epochs 100
+
+model-4(相较于之前三个模型，这个在进行自监督预训练时，我只用了CsPbBr3、CH3NH3PbI3和CsPbI3的数据，没有使用CsPbCl3和CH3NH3GeI3)
+batch_size 2
+num_layer 3
+sde_steps 3
+mask_rate 0.45
+remask_rate 0.5
+lr 1e-4
+num_workers 4
+num_remask_views 2
+temperature 0.05
+gamma 3
+epochs 100
