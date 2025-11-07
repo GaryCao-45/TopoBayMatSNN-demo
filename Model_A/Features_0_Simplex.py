@@ -64,7 +64,7 @@ class UnifiedFeatureCalculator:
         - Group A: Basic physicochemical properties.
         - Group B: Quantum chemical properties.
         - Group C: Local geometry, symmetry, and topology.
-        - Group D: Fused features based on Bayesian mechanics and Lie algebra.
+        - Group D: Advanced Fused Algebraic and Potential Features.
         """
         print("\n--- Starting Unified Atomic Feature Calculation (DEMO) ---")
         num_atoms = len(self.structure)
@@ -115,26 +115,26 @@ class UnifiedFeatureCalculator:
         # - Topological Data Analysis (TDA) on local atomic neighborhoods (e.g., persistence homology).
         # - Deriving invariants from local structure tensors.
         feature_names = [
-            'bond_length_distortion', 'vectorial_asymmetry', 'mean_neighbor_distance',
-            'local_anisotropy', 'symmetry_breaking_quotient', 'site_symmetry_order',
-            'H0_persistence_feature', 'H1_persistence_feature',
-            'tensor_trace', 'tensor_determinant', 'tensor_eigenvalue_variance'
+            'geometric_distortion_metric', 'polar_asymmetry_norm', 'mean_neighbor_distance',
+            'local_anisotropy_index', 'symmetry_deviation_quotient', 'site_symmetry_order',
+            'TDA_connectivity_feature', 'TDA_loop_feature',
+            'structure_tensor_trace', 'structure_tensor_determinant', 'structure_tensor_eigenvalue_variance'
         ]
         return pd.DataFrame(np.random.rand(num_atoms, len(feature_names)), columns=feature_names)
 
     def _calculate_group_D_features(self, num_atoms: int) -> pd.DataFrame:
         """(Placeholder) Computes advanced fused features."""
-        print("Calculating Group D: Bayesian Mechanics and Lie Algebra Fused Features (Placeholder)...")
+        print("Calculating Group D: Advanced Fused Algebraic and Potential Features (Placeholder)...")
         # This is the most abstract and innovative feature group.
-        # - Bayesian Mechanics: Features like 'local environmental entropy' and 'variational free energy'
+        # - Potential Metrics: Features like 'local environmental entropy' and 'local_potential_metric'
         #   are calculated to model the information content and stability of local environments.
-        # - Lie Algebra: Invariants derived from atomic tensors (e.g., norms, principal angles)
+        # - Algebraic Invariants: Invariants derived from local tensors (e.g., norms, principal angles)
         #   are used to quantify rotational symmetries and anisotropies in quantum fields.
         # - Fused Features: Combining geometric, chemical, and quantum properties in non-linear ways
-        #   (e.g., 'structure-chemistry incompatibility').
+        #   (e.g., 'structure-chemistry-conflict').
         feature_names = [
-            'local_env_entropy', 'variational_free_energy', 'lie_algebra_norm',
-            'lie_algebra_principal_angle', 'structure_chemistry_incompatibility'
+            'local_env_entropy', 'local_stability_potential', 'field_algebraic_norm',
+            'field_algebraic_angle', 'structure_chemistry_mismatch'
         ]
         return pd.DataFrame(np.random.rand(num_atoms, len(feature_names)), columns=feature_names)
 

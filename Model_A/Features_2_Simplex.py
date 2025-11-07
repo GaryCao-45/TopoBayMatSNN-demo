@@ -129,7 +129,7 @@ class TriangleFeatureCalculator:
         feature_names = [
             'avg_atomic_bader_charge', 'var_atomic_bader_charge',
             'avg_bond_distance', 'var_bond_distance',
-            'avg_bond_lie_incompatibility', 'var_bond_lie_incompatibility'
+            'avg_bond_algebraic_mismatch', 'var_bond_algebraic_mismatch'
         ]
         return pd.DataFrame(np.random.rand(num_triangles, len(feature_names)), columns=feature_names)
 
@@ -151,19 +151,19 @@ class TriangleFeatureCalculator:
         print("Calculating Group D: Bayesian Mechanics Fused Features (Placeholder)...")
         # This is where the most novel concepts are implemented.
         # 这是实现最新颖概念的地方。
-        # - vfe_laplacian_variance: Measures the "information curvature" across the triangle,
-        #   approximated by the discrete Laplacian of the local variational free energy (VFE).
-        # - vfe_laplacian_variance: 衡量跨三角形的“信息曲率”，
-        #   通过局部变分自由能（VFE）的离散拉普拉斯算子近似。
-        # - lie_commutator_flux: Represents the "information circulation" or curl, calculated
-        #   by a line integral of the bond lie_incompatibility feature around the triangle.
-        # - lie_commutator_flux: 代表“信息循环”或旋度，通过键李不兼容特征沿三角形的线积分计算。
-        # - structural_tensor_product_trace: A three-body term capturing the interaction
+        # - potential_curvature_variance: Measures the "information curvature" across the triangle,
+        #   approximated by the discrete Laplacian of the local stability potential.
+        # - potential_curvature_variance: 衡量跨三角形的“信息曲率”，
+        #   通过局部稳定性势的离散拉普拉斯算子近似。
+        # - algebraic_flux_metric: Represents the "information circulation" or curl, calculated
+        #   by a line integral of the bond algebraic mismatch feature around the triangle.
+        # - algebraic_flux_metric: 代表“信息循环”或旋度，通过键代数不匹配特征沿三角形的线积分计算。
+        # - high_order_tensor_interaction: A three-body term capturing the interaction
         #   of the atomic structural tensors.
-        # - structural_tensor_product_trace: 捕获原子结构张量相互作用的三体项。
+        # - high_order_tensor_interaction: 捕获原子结构张量相互作用的三体项。
         feature_names = [
-            'vfe_laplacian_variance', 'vfe_variance', 'lie_commutator_flux',
-            'structural_tensor_product_trace', 'structure_tensor_normal_projection'
+            'potential_curvature_variance', 'potential_stability_variance', 'algebraic_flux_metric',
+            'high_order_tensor_interaction', 'tensor_normal_projection_metric'
         ]
         return pd.DataFrame(np.random.rand(num_triangles, len(feature_names)), columns=feature_names)
 

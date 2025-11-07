@@ -29,7 +29,7 @@ class BondFeatureCalculator:
     def __init__(self,
                  cif_file: str,
                  atomic_features_csv: str,
-                 atomic_tensors_csv: str,
+                 local_tensors_csv: str,
                  **kwargs):
         """
         Initializes the calculator by loading the structure and pre-computed features.
@@ -46,7 +46,7 @@ class BondFeatureCalculator:
         print("--- Initializing BondFeatureCalculator (DEMO) ---")
         self.topology_graph = self._build_topology_graph(cif_file)
         self.atomic_features = self._load_data(atomic_features_csv)
-        self.atomic_tensors = self._load_data(atomic_tensors_csv)
+        self.atomic_tensors = self._load_data(atomic_tensors_csv) # type: ignore
         print("Initialization complete.")
 
     def _build_topology_graph(self, cif_file: str):
@@ -143,7 +143,7 @@ class BondFeatureCalculator:
             'delta_electronegativity', 'avg_electronegativity',
             'delta_bader_charge', 'avg_bader_charge',
             'delta_local_dos_fermi', 'avg_local_dos_fermi',
-            'delta_lie_algebra_norm', 'avg_lie_algebra_norm'
+            'delta_field_algebraic_norm', 'avg_field_algebraic_norm'
         ]
         return pd.DataFrame(np.random.rand(num_bonds, len(feature_names)), columns=feature_names)
 
@@ -165,29 +165,29 @@ class BondFeatureCalculator:
         return pd.DataFrame(np.random.rand(num_bonds, len(feature_names)), columns=feature_names)
 
     def _calculate_features_D(self, num_bonds: int) -> pd.DataFrame:
-        """(Placeholder) Computes advanced fused algebraic features for the bond.
-        （占位符）计算键的高级融合代数特征。"""
-        print("Calculating Group D: Fused Algebraic Features (Placeholder)...")
+        """(Placeholder) Computes advanced fused interaction features for the bond.
+        （占位符）计算键的高级融合相互作用特征。"""
+        print("Calculating Group D: Fused Interaction Features (Placeholder)...")
         # This is another highly innovative feature set, representing interactions
-        # between the atomic tensors and the bond's geometry.
-        # 这是另一组高度创新的特征集，代表原子张量与键几何之间的相互作用。
-        # - lie_incompatibility: The Lie bracket (commutator) of the two atomic tensors,
-        #   quantifying the "disagreement" in local rotational symmetries.
-        # - lie_incompatibility: 两个原子张量的李括号（换位子），量化局部旋转对称性中的“不一致”。
-        # - tensor_alignment: The projection of one tensor onto another, measuring alignment.
-        # - tensor_alignment: 一个张量到另一个张量上的投影，测量对齐程度。
-        # - symplectic_coupling: Interaction between the bond vector and the gradient of a scalar field.
-        # - symplectic_coupling: 键向量与标量场梯度之间的相互作用。
+        # between the local tensors and the bond's geometry.
+        # 这是另一组高度创新的特征集，代表局部张量与键几何之间的相互作用。
+        # - algebraic_mismatch_metric: Quantifies the "disagreement" in local rotational symmetries
+        #   between the two endpoint environments.
+        # - algebraic_mismatch_metric: 量化两个端点环境之间局部旋转对称性中的“不匹配”。
+        # - tensor_alignment_metric: The projection of one tensor onto another, measuring alignment.
+        # - tensor_alignment_metric: 一个张量到另一个张量上的投影，测量对齐程度。
+        # - field_geometry_coupling_metric: Interaction between the bond vector and the gradient of a scalar field.
+        # - field_geometry_coupling_metric: 键向量与标量场梯度之间的相互作用。
         feature_names = [
-            'lie_incompatibility', 'tensor_alignment', 'local_quotient_orbit_size',
-            'symplectic_coupling', 'align_proj_u1', 'align_proj_v1'
+            'algebraic_mismatch_metric', 'tensor_alignment_metric', 'local_symmetry_orbit_size',
+            'field_geometry_coupling_metric', 'align_proj_axis_1', 'align_proj_axis_2'
         ]
         return pd.DataFrame(np.random.rand(num_bonds, len(feature_names)), columns=feature_names)
 
 def run_1_simplex_features_demo(cif_file: str,
-                              atomic_features_csv: str,
-                              atomic_tensors_csv: str,
-                              output_dir: str):
+                               atomic_features_csv: str,
+                               local_tensors_csv: str,
+                               output_dir: str):
     """
     Main execution function for the 1-simplex feature generation demo.
     1-单纯形特征生成演示的主执行函数。
@@ -205,7 +205,7 @@ def run_1_simplex_features_demo(cif_file: str,
         calculator = BondFeatureCalculator(
             cif_file=cif_file,
             atomic_features_csv=atomic_features_csv,
-            atomic_tensors_csv=atomic_tensors_csv
+            local_tensors_csv=local_tensors_csv
         )
         
         final_features_df = calculator.calculate_all_features()
@@ -229,7 +229,7 @@ if __name__ == '__main__':
     # Example usage for the demo
     mock_cif_file = "path/to/your/structure.cif"
     mock_0_simplex_csv = "model_a_results_demo/structure-0-Simplex-Features-demo.csv"
-    mock_tensors_csv = "atomic_tensors_results_demo/structure-lie-algebra-tensors-demo.csv"
+    mock_tensors_csv = "local_tensors_results_demo/structure-local-algebra-tensors-demo.csv"
     mock_output_dir = "model_a_results_demo"
 
     # Ensure dummy input files exist for the demo to run
@@ -242,6 +242,6 @@ if __name__ == '__main__':
     run_1_simplex_features_demo(
         cif_file=mock_cif_file,
         atomic_features_csv=mock_0_simplex_csv,
-        atomic_tensors_csv=mock_tensors_csv,
+        local_tensors_csv=mock_tensors_csv,
         output_dir=mock_output_dir
     )
