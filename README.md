@@ -1,8 +1,8 @@
-# TopoBayMatSNN-Demo
+# TopoBayMatSNN-Demo (Proprietary Feature Framework)
 
 **TopoBayMatSNN-Demo** is a demonstration version of the scientific machine learning environment tailored for modeling materials using Bayesian neural networks, topological deep learning, and simplicial neural networks.
 
-This demo version showcases the core programming framework and structure, highlighting implementation of topological feature extraction and simplicial neural networks. Core algorithmic details and proprietary results have been simplified or removed to focus on code organization and best practices.
+This demo version showcases the core programming framework and structure, highlighting implementation of topological feature extraction and simplicial neural networks. **IMPORTANT: All core algorithmic details, proprietary feature names, and specific mathematical formulations related to the Topological-Quantum-Graph Fusion Descriptor (as described in the accompanying research plan) have been intentionally abstracted, simplified, or removed to protect intellectual property.** This repository focuses solely on code organization and architectural best practices.
 
 <div align="center">
   <img width="256" height="256" alt="Logo-1" src="Logo/Logo-1.png" style="margin-right: 20px;" />
@@ -16,10 +16,10 @@ This demo version showcases the core programming framework and structure, highli
 ## Demo Structure
 
 ### Model_A/
-- **Features_0_Simplex.py**: Framework for 0-simplex (atomic) feature extraction. Core computations placeholder.
+- **Features_0_Simplex.py**: Framework for 0-simplex (atomic) feature extraction. Core computations abstracted.
 - **Features_1_Simplex.py**: Framework for 1-simplex (bond) feature processing.
 - **Features_2_Simplex.py**: Framework for 2-simplex (triangle) topological features.
-- **generate_atomic_tensors.py**: Template for tensor generation.
+- **generate_local_tensors.py**: Template for local field tensor generation.
 - **Model-A.py**: Pipeline orchestrator for simplicial feature extraction.
 
 ### Model_C/
